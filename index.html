@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda JavaScript: Fundamentos e Tópicos Avançados</title>
+    <!-- Carrega o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Cor de fundo suave */
+            color: #334155; /* Cor de texto padrão */
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* Cantos arredondados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        pre {
+            background-color: #1e293b; /* Fundo escuro para código */
+            color: #e2e8f0; /* Texto claro para código */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            overflow-x: auto; /* Permite rolagem horizontal para código longo */
+            font-family: 'Fira Code', 'Cascadia Code', monospace; /* Fonte monoespaçada para código */
+            line-height: 1.5;
+            position: relative; /* Para posicionar o botão de copiar */
+            margin-top: 1rem; /* Espaço para o botão */
+        }
+        code {
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            background-color: #e2e8f000;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+            color: #b4bdca;
+        }
+        h1, h2, h3, h4 {
+            color: #1a202c; /* Títulos mais escuros */
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            background-color: #4f46e5; /* Cor de botão primária */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #4338ca; /* Cor mais escura ao passar o mouse */
+        }
+        .copy-button {
+            background-color: #3b82f6; /* Azul para o botão de copiar */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem; /* Texto menor */
+            transition: background-color 0.2s ease;
+            position: absolute;
+            top: 0.5rem; /* Posição dentro do pre */
+            right: 0.5rem; /* Posição dentro do pre */
+            z-index: 10; /* Garante que fique por cima do código */
+        }
+        .copy-button:hover {
+            background-color: #2563eb;
+        }
+        .copy-feedback {
+            color: #10b981; /* Verde para feedback de sucesso */
+            font-weight: 600;
+            margin-left: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .copy-feedback.show {
+            opacity: 1;
+        }
+        /* Estilo para o placeholder do anúncio */
+        .ad-placeholder {
+            background-color: #e0e7ff; /* Um azul claro para destacar */
+            border: 1px dashed #6366f1; /* Borda tracejada */
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin: 2rem auto; /* Margem para separar do conteúdo */
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4338ca;
+            max-width: 700px; /* Limita a largura para não ser muito grande */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container">
+        <h1 class="text-4xl text-center mb-8">Aprenda JavaScript: Do Básico ao Avançado</h1>
+        <p class="text-center text-lg mb-8">Prepare-se para uma jornada clara e visual no mundo do JavaScript! Vamos construir seu conhecimento passo a passo, com exemplos práticos e explicações diretas.</p>
+        <p class="text-center text-sm text-gray-600 mb-8">Este conteúdo é suportado por anúncios. Os espaços abaixo são dedicados a publicidade para manter o material gratuito e acessível. Agradecemos sua compreensão!</p>
+
+        <!-- Seção: O que é JavaScript? -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">1. O que é JavaScript? 🤔</h2>
+            <p class="mb-4">Imagine a internet como uma casa: <strong>HTML</strong> constrói as paredes e o telhado (a estrutura), <strong>CSS</strong> decora a casa com cores e móveis (o estilo), e <strong>JavaScript</strong> adiciona a vida! É o JavaScript que faz as luzes acenderem, as portas abrirem, os botões funcionarem e as animações acontecerem.</p>
+            <p>É uma linguagem super versátil, usada não só para deixar sites interativos (no navegador), mas também para criar aplicativos de celular, programas de computador e até mesmo para construir a parte de "trás" de sites (servidores, com Node.js).</p>
+        </div>
+
+        <!-- Placeholder para Anúncio 1 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Sua publicidade aqui!
+        </div>
+
+        <!-- Seção: Olá, Mundo! -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">2. Olá, Mundo! 👋</h2>
+            <p class="mb-4">O primeiro passo em qualquer linguagem é fazer o computador dizer "Olá, Mundo!". Em JavaScript, podemos fazer isso de algumas formas simples:</p>
+
+            <h3 class="text-xl mb-2">No Console do Navegador (Seu Laboratório Secreto):</h3>
+            <p class="mb-2">O console é como um caderno de rascunhos onde você pode testar códigos rapidamente. Para abri-lo, pressione <strong>F12</strong> ou <strong>Ctrl+Shift+I</strong> (no Windows/Linux) ou <strong>Cmd+Option+I</strong> (no Mac) no seu navegador, e vá na aba "Console".</p>
+            <pre id="code-hello-console">
+<button class="copy-button" data-code-target="code-hello-console">Copiar Código</button>
+<code>// Este é um comentário em JavaScript - o computador ignora isso.
+console.log("Olá, Mundo!"); // 'console.log' é para mostrar mensagens no console.
+</code></pre>
+            <p class="mt-4">Digite o código acima no console e pressione Enter. Você verá "Olá, Mundo!" aparecer! 🎉</p>
+
+            <h3 class="text-xl mt-6 mb-2">No HTML (Fazendo a Página Falar):</h3>
+            <p class="mb-2">JavaScript pode mudar o que aparece na sua página da web. Veja como:</p>
+            <pre id="code-hello-html">
+<button class="copy-button" data-code-target="code-hello-html">Copiar Código</button>
+<code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Minha Primeira Página JS&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Este é um título vazio por enquanto --&gt;
+    &lt;h1 id="titulo-da-pagina"&gt;&lt;/h1&gt;
+
+    &lt;script&gt;
+        // 1. Encontre o título na página (como encontrar um amigo pelo nome)
+        const tituloElemento = document.getElementById("titulo-da-pagina");
+
+        // 2. Mude o que está escrito dentro dele
+        tituloElemento.innerHTML = "Olá, Mundo!";
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            <p class="mt-4">Salve este código como um arquivo <code>.html</code> e abra-o no navegador. Você verá o título "Olá, Mundo!" na página!</p>
+        </div>
+
+        <!-- Placeholder para Anúncio 2 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Apoie o conteúdo!
+        </div>
+
+        <!-- Seção: Variáveis e Tipos de Dados -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">3. Variáveis e Tipos de Dados 📦</h2>
+            <p class="mb-4">Pense nas variáveis como <strong>caixas</strong> onde você guarda informações. Cada caixa tem um nome (o nome da variável) e pode guardar um tipo diferente de "coisa" (o tipo de dado).</p>
+
+            <h3 class="text-xl mb-2">Tipos de Caixas (Declaração de Variáveis):</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>let</code>: A caixa mais comum. Você pode <strong>mudar o que está dentro</strong> dela depois.</li>
+                <li><code>const</code>: Uma caixa "constante". Uma vez que você coloca algo dentro, <strong>não pode mais mudar</strong>. Ótima para coisas que não devem ser alteradas (como o valor de PI).</li>
+                <li><code>var</code>: Uma caixa mais antiga. Funciona, mas <code>let</code> e <code>const</code> são mais modernas e seguras. É melhor evitar <code>var</code> em códigos novos.</li>
+            </ul>
+            <pre id="code-variables-declaration">
+<button class="copy-button" data-code-target="code-variables-declaration">Copiar Código</button>
+<code>// Usando 'let' - o conteúdo pode mudar
+let meuNome = "Ana";
+console.log(meuNome); // Saída: Ana
+meuNome = "Carolina"; // Posso mudar!
+console.log(meuNome); // Saída: Carolina
+
+// Usando 'const' - o conteúdo não pode mudar
+const PI = 3.14159;
+console.log(PI); // Saída: 3.14159
+// PI = 3.0; // Se você tentar isso, dará um erro!
+
+// Usando 'var' (evite em novos projetos)
+var minhaIdade = 28;
+console.log(minhaIdade); // Saída: 28
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">O que Guardamos nas Caixas (Tipos de Dados):</h3>
+            <p class="mb-4">As "coisas" que guardamos nas caixas têm tipos:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong><code>string</code> (Texto):</strong> Palavras, frases. Sempre entre aspas (simples ou duplas). Ex: <code>"Olá"</code>, <code>'JavaScript'</code>.</li>
+                <li><strong><code>number</code> (Número):</strong> Números inteiros (<code>10</code>) ou com casas decimais (<code>3.14</code>).</li>
+                <li><strong><code>boolean</code> (Booleano):</strong> Apenas <code>true</code> (verdadeiro) ou <code>false</code> (falso). Pense em uma lâmpada: ligada ou desligada.</li>
+                <li><strong><code>undefined</code> (Indefinido):</strong> Uma caixa que foi criada, mas ainda não tem nada dentro.</li>
+                <li><strong><code>null</code> (Nulo):</strong> Uma caixa que foi criada e você explicitamente colocou "nada" dentro dela.</li>
+                <li><strong><code>bigint</code> (Número Grande):</strong> Para números inteiros realmente gigantes.</li>
+                <li><strong><code>symbol</code> (Símbolo):</strong> Para valores únicos e anônimos.</li>
+            </ul>
+            <pre id="code-primitive-types">
+<button class="copy-button" data-code-target="code-primitive-types">Copiar Código</button>
+<code>let saudacao = "Bem-vindo ao JavaScript!"; // string
+let quantidade = 100;                     // number (inteiro)
+let precoUnitario = 9.99;                 // number (decimal/float)
+let estaLogado = true;                    // boolean
+let semValor;                             // undefined (não atribuído)
+let valorNulo = null;                     // null (atribuído como "nada")
+
+console.log(typeof saudacao);    // Saída: string
+console.log(typeof quantidade);  // Saída: number
+console.log(typeof estaLogado);  // Saída: boolean
+console.log(typeof semValor);    // Saída: undefined
+console.log(typeof valorNulo);   // Saída: object (curiosidade do JS, mas é um tipo primitivo)
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Caixas Mais Complexas (Objetos e Arrays):</h3>
+            <p class="mb-4">Além das caixas simples, temos caixas que podem guardar várias informações ou uma lista de coisas:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong><code>Array</code> (Lista/Coleção):</strong> Uma lista ordenada de itens. Pense em uma lista de compras.</li>
+                <li><strong><code>Object</code> (Objeto):</strong> Uma coleção de informações relacionadas, onde cada informação tem um "nome" (chave) e um "valor". Pense em uma ficha de cadastro de uma pessoa.</li>
+            </ul>
+            <pre id="code-complex-types">
+<button class="copy-button" data-code-target="code-complex-types">Copiar Código</button>
+<code>// Array (Lista de frutas)
+let frutas = ["maçã", "banana", "laranja"];
+console.log(frutas[0]);     // Saída: maçã (o primeiro item é sempre o 0)
+console.log(frutas.length); // Saída: 3 (quantos itens tem na lista)
+
+// Objeto (Ficha de uma pessoa)
+let pessoa = {
+    nome: "Carlos",
+    idade: 40,
+    cidade: "São Paulo",
+    profissao: "Engenheiro"
+};
+console.log(pessoa.nome);       // Saída: Carlos
+console.log(pessoa["cidade"]);  // Saída: São Paulo (outra forma de acessar)
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 3 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Aprenda mais JavaScript!
+        </div>
+
+        <!-- Seção: Operadores -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">4. Operadores ➕➖✖️➗</h2>
+            <p class="mb-4">Operadores são como "ferramentas" que usamos para fazer contas, comparar coisas ou combinar lógicas.</p>
+            <h3 class="text-xl mb-2">Operadores Aritméticos (Contas):</h3>
+            <pre id="code-arithmetic-operators">
+<button class="copy-button" data-code-target="code-arithmetic-operators">Copiar Código</button>
+<code>let num1 = 10;
+let num2 = 5;
+
+console.log(num1 + num2); // Adição: 15
+console.log(num1 - num2); // Subtração: 5
+console.log(num1 * num2); // Multiplicação: 50
+console.log(num1 / num2); // Divisão: 2
+console.log(num1 % num2); // Módulo (resto da divisão): 0 (10 dividido por 5 não tem resto)
+console.log(num1 ** 2);   // Exponenciação (10 elevado a 2): 100
+</code></pre>
+            <h3 class="text-xl mt-6 mb-2">Operadores de Comparação (Perguntas de Sim/Não):</h3>
+            <p class="mb-2">Esses operadores sempre retornam <code>true</code> ou <code>false</code>.</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>==</code> (Igual a): Compara valores, mas pode tentar "converter" os tipos.</li>
+                <li><code>===</code> (Estritamente igual a): Compara valores E tipos. **Sempre use este!**</li>
+                <li><code>!=</code> (Diferente de): Compara valores, pode converter tipos.</li>
+                <li><code>!==</code> (Estritamente diferente de): Compara valores E tipos. **Sempre use este!**</li>
+                <li><code>></code> (Maior que), <code><</code> (Menor que), <code>>=</code> (Maior ou igual), <code><=</code> (Menor ou igual).</li>
+            </ul>
+            <pre id="code-comparison-operators">
+<button class="copy-button" data-code-target="code-comparison-operators">Copiar Código</button>
+<code>let x = 10;
+let y = "10"; // Note que é um texto "10", não um número
+
+console.log(x == y);  // Saída: true (JS converte "10" para número antes de comparar)
+console.log(x === y); // Saída: false (10 é número, "10" é texto - tipos diferentes)
+
+console.log(x != y);  // Saída: false
+console.log(x !== y); // Saída: true
+
+console.log(x > 5);   // Saída: true
+console.log(x <= 10); // Saída: true
+</code></pre>
+            <h3 class="text-xl mt-6 mb-2">Operadores Lógicos (Combinando Perguntas):</h3>
+            <pre id="code-logical-operators">
+<button class="copy-button" data-code-target="code-logical-operators">Copiar Código</button>
+<code>let temSol = true;
+let estaFrio = false;
+
+console.log(temSol && estaFrio); // AND (E): true E false = false (só é true se AMBOS forem true)
+console.log(temSol || estaFrio); // OR (OU): true OU false = true (é true se UM DOS DOIS for true)
+console.log(!temSol);             // NOT (NÃO): Inverte o valor. !true = false
+</code></pre>
+            <h3 class="text-xl mt-6 mb-2">Operador Ternário (Pergunta Rápida):</h3>
+            <p>Uma forma compacta de fazer uma pergunta e escolher um de dois resultados.</p>
+            <pre id="code-ternary-operator">
+<button class="copy-button" data-code-target="code-ternary-operator">Copiar Código</button>
+<code>let idade = 20;
+// Pergunta: idade é maior ou igual a 18? Se sim, 'Adulto', senão 'Menor'.
+let status = (idade >= 18) ? "Adulto" : "Menor";
+console.log(status); // Saída: Adulto
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 4 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Descubra novas ferramentas!
+        </div>
+
+        <!-- Seção: Entrada e Saída (Básica no Navegador) -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">5. Entrada e Saída (Interagindo com o Usuário) 💬</h2>
+            <p class="mb-4">Para interações muito simples com o usuário diretamente no navegador, podemos usar:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>alert()</code>: Para mostrar uma mensagem pop-up para o usuário.</li>
+                <li><code>prompt()</code>: Para pedir uma informação ao usuário através de um pop-up.</li>
+            </ul>
+            <p class="text-orange-600 font-semibold mb-4"><strong>⚠️ Atenção:</strong> <code>alert()</code> e <code>prompt()</code> são muito básicos e <strong>bloqueiam</strong> a página. Em sites de verdade, usamos elementos HTML (como caixas de texto e botões) para interagir com o usuário, o que é muito mais suave e profissional.</p>
+            <pre id="code-io-basic">
+<button class="copy-button" data-code-target="code-io-basic">Copiar Código</button>
+<code>// Exemplo de uso de alert (saída)
+// alert("Bem-vindo ao JavaScript!"); // Descomente para testar no navegador
+
+// Exemplo de uso de prompt (entrada)
+// let seuNome = prompt("Qual é o seu nome?"); // Descomente para testar no navegador
+// if (seuNome) { // Verifica se o usuário não cancelou o prompt
+//     console.log("Olá, " + seuNome + "! Prazer em conhecê-lo.");
+// }
+</code></pre>
+            <p class="mt-4">Para testar o código acima, você precisará descomentar as linhas e executá-las em um arquivo HTML com um script.</p>
+        </div>
+
+        <!-- Placeholder para Anúncio 5 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Conheça nossos cursos!
+        </div>
+
+        <!-- Seção: Estruturas de Controle -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">6. Estruturas de Controle (Tomando Decisões e Repetindo Tarefas) 🚦🔄</h2>
+            <p class="mb-4">Essas estruturas são o "cérebro" do seu código, permitindo que ele tome decisões e repita ações.</p>
+
+            <h3 class="text-xl mb-2">If/Else (Caminhos Diferentes)</h3>
+            <p>Imagine que seu código está em uma encruzilhada e precisa escolher um caminho baseado em uma condição.</p>
+            <pre id="code-if-else">
+<button class="copy-button" data-code-target="code-if-else">Copiar Código</button>
+<code>let hora = 14;
+
+if (hora < 12) { // Se a hora for menor que 12...
+    console.log("Bom dia!");
+} else if (hora < 18) { // Senão, se a hora for menor que 18...
+    console.log("Boa tarde!");
+} else { // Senão (se nenhuma das anteriores for verdadeira)...
+    console.log("Boa noite!");
+}
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Switch Case (Menu de Opções)</h3>
+            <p>Útil quando você tem muitas opções para escolher com base em um único valor, como um menu.</p>
+            <pre id="code-switch-case">
+<button class="copy-button" data-code-target="code-switch-case">Copiar Código</button>
+<code>let diaDaSemana = "Terça";
+
+switch (diaDaSemana) {
+    case "Segunda":
+        console.log("Dia de começar a semana.");
+        break; // Sai do switch
+    case "Terça":
+    case "Quarta":
+    case "Quinta":
+        console.log("Meio da semana.");
+        break;
+    case "Sexta":
+        console.log("Sextou!");
+        break;
+    default: // Se nenhuma das opções acima for verdadeira
+        console.log("Fim de semana!");
+}
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Loops (Laços de Repetição - Tarefas Repetitivas)</h3>
+            <p>Quando você precisa fazer a mesma coisa várias vezes, os loops são seus amigos.</p>
+            <pre id="code-loops">
+<button class="copy-button" data-code-target="code-loops">Copiar Código</button>
+<code>// Loop 'for': Perfeito quando você sabe quantas vezes quer repetir.
+// (Começa em 0; Repete enquanto i for menor que 5; Aumenta i em 1 a cada vez)
+for (let i = 0; i < 5; i++) {
+    console.log("Contador for: " + i);
+}
+// Saída: Contador for: 0, 1, 2, 3, 4
+
+// Loop 'while': Repete enquanto uma condição for verdadeira.
+let contador = 0;
+while (contador < 3) {
+    console.log("Contador while: " + contador);
+    contador++; // Lembre-se de mudar a condição para o loop não ser infinito!
+}
+// Saída: Contador while: 0, 1, 2
+
+// Loop 'do...while': Garante que o código seja executado pelo menos uma vez.
+let j = 0;
+do {
+    console.log("Contador do...while: " + j);
+    j++;
+} while (j < 2);
+// Saída: Contador do...while: 0, 1
+
+// Loop 'for...of': Para percorrer itens de uma lista (Array).
+let cores = ["vermelho", "verde", "azul"];
+for (let cor of cores) {
+    console.log("Cor: " + cor);
+}
+// Saída: Cor: vermelho, Cor: verde, Cor: azul
+
+// Loop 'for...in': Para percorrer as "chaves" (nomes das propriedades) de um Objeto.
+let carro = { marca: "Toyota", modelo: "Corolla", ano: 2020 };
+for (let chave in carro) {
+    console.log(chave + ": " + carro[chave]); // Acessa o valor pela chave
+}
+// Saída: marca: Toyota, modelo: Corolla, ano: 2020
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 6 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Ferramentas de desenvolvimento!
+        </div>
+
+        <!-- Seção: Funções -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">7. Funções (Suas Mini-Máquinas de Tarefas) ⚙️</h2>
+            <p class="mb-4">Funções são como pequenas máquinas que você constrói para fazer um trabalho específico. Você pode "ligar" (chamar) essa máquina quantas vezes quiser, sem precisar reescrever o código.</p>
+
+            <h3 class="text-xl mb-2">Função Tradicional:</h3>
+            <pre id="code-function-traditional">
+<button class="copy-button" data-code-target="code-function-traditional">Copiar Código</button>
+<code>// 'function' é a palavra-chave, 'somar' é o nome da sua máquina, (a, b) são as "entradas"
+function somar(a, b) {
+    return a + b; // 'return' é o que a máquina "entrega" de volta
+}
+
+let resultadoSoma = somar(7, 3); // Ligando a máquina 'somar' com entradas 7 e 3
+console.log("Resultado da soma: " + resultadoSoma); // Saída: 10
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Função de Seta (Arrow Function - Mais Moderna):</h3>
+            <p>Uma forma mais curta e elegante de escrever funções, especialmente para tarefas rápidas.</p>
+            <pre id="code-arrow-function">
+<button class="copy-button" data-code-target="code-arrow-function">Copiar Código</button>
+<code>// 'const' porque a função não vai mudar, (a, b) => é a "seta" que aponta para o que ela faz
+const multiplicar = (a, b) => {
+    return a * b;
+};
+
+let resultadoMultiplicacao = multiplicar(4, 5);
+console.log("Resultado da multiplicação: " + resultadoMultiplicacao); // Saída: 20
+
+// Se a função faz apenas uma coisa em uma linha, pode ser ainda mais curta:
+const saudacao = nome => `Olá, ${nome}!`; // O 'return' é automático aqui
+console.log(saudacao("Fernanda")); // Saída: Olá, Fernanda!
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Escopo de Variáveis (Onde a Caixa é Visível) 🗺️</h3>
+            <p>Pense no escopo como o "alcance" ou a "visibilidade" de suas variáveis (caixas). Onde você pode ver e usar uma caixa?</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Escopo Global:</strong> Variáveis declaradas fora de qualquer função ou bloco. São como um objeto no meio da sala que todos podem ver e usar.</li>
+                <li><strong>Escopo de Função:</strong> Variáveis declaradas com <code>var</code> dentro de uma função. Só são visíveis dentro dessa função (como um objeto dentro de um quarto).</li>
+                <li><strong>Escopo de Bloco:</strong> Variáveis declaradas com <code>let</code> ou <code>const</code> dentro de um bloco <code>{}</code> (como um <code>if</code>, <code>for</code> ou dentro de uma função). São visíveis apenas dentro daquele bloco específico (como um objeto dentro de um armário, que está dentro de um quarto).</li>
+            </ul>
+            <pre id="code-scope">
+<button class="copy-button" data-code-target="code-scope">Copiar Código</button>
+<code>let variavelGlobal = "Sou visível em todo lugar!"; // Escopo Global
+
+function exemploEscopo() {
+    let variavelLocalFuncao = "Sou visível só aqui dentro da função."; // Escopo de Função
+    if (true) {
+        const variavelBloco = "Sou visível só dentro deste 'if'."; // Escopo de Bloco
+        console.log(variavelGlobal);      // OK: Acessa a global
+        console.log(variavelLocalFuncao); // OK: Acessa a da função
+        console.log(variavelBloco);       // OK: Acessa a do bloco
+    }
+    // console.log(variavelBloco); // ERRO! 'variavelBloco' não existe fora do 'if'
+}
+exemploEscopo();
+// console.log(variavelLocalFuncao); // ERRO! 'variavelLocalFuncao' não existe fora da função
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Closures (A Mochila da Função) 🎒</h3>
+            <p>Uma closure é quando uma função "lembra" e pode acessar variáveis de onde ela foi criada, mesmo que a função "pai" já tenha terminado. Pense que a função leva uma "mochila" com as variáveis do seu ambiente de nascimento.</p>
+            <pre id="code-closures">
+<button class="copy-button" data-code-target="code-closures">Copiar Código</button>
+<code>function criarContador() {
+    let contador = 0; // Esta variável está na "mochila" da função interna
+
+    // A função interna é retornada e "lembra" do 'contador'
+    return function() {
+        contador++; // Ela pode acessar e mudar 'contador'
+        return contador;
+    };
+}
+
+const meuContador = criarContador(); // 'meuContador' agora é a função interna
+console.log(meuContador()); // Saída: 1 (a função interna acessa e atualiza o 'contador')
+console.log(meuContador()); // Saída: 2
+console.log(meuContador()); // Saída: 3
+
+const outroContador = criarContador(); // Outra "mochila" separada
+console.log(outroContador()); // Saída: 1
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 7 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Crie seu primeiro projeto!
+        </div>
+
+        <!-- Seção: Métodos de Array Avançados -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">8. Métodos de Array Avançados (Superpoderes para Listas) ✨</h2>
+            <p class="mb-4">Arrays (listas) têm métodos especiais que facilitam muito a vida para trabalhar com coleções de dados.</p>
+            <pre id="code-array-methods">
+<button class="copy-button" data-code-target="code-array-methods">Copiar Código</button>
+<code>const numeros = [1, 2, 3, 4, 5];
+
+// forEach: Para cada item na lista, faça algo. (Só para fazer, não cria nova lista)
+console.log("--- forEach (Para cada item): ---");
+numeros.forEach(function(numero) {
+    console.log(`O dobro de ${numero} é ${numero * 2}`);
+});
+// Saída: O dobro de 1 é 2, O dobro de 2 é 4, etc.
+
+// map: Transforme cada item da lista em algo novo e crie uma NOVA lista com os resultados.
+console.log("\n--- map (Transformar e Nova Lista): ---");
+const numerosDobrados = numeros.map(numero => numero * 2);
+console.log(numerosDobrados); // Saída: [2, 4, 6, 8, 10]
+
+// filter: Crie uma NOVA lista, mas só com os itens que passam em um teste.
+console.log("\n--- filter (Filtrar Itens): ---");
+const numerosPares = numeros.filter(numero => numero % 2 === 0);
+console.log(numerosPares); // Saída: [2, 4]
+
+// reduce: Reduza a lista a um único valor (soma, média, etc.).
+console.log("\n--- reduce (Reduzir a um único valor): ---");
+const somaTotal = numeros.reduce((acumulador, numero) => acumulador + numero, 0);
+console.log(somaTotal); // Saída: 15 (0 + 1 + 2 + 3 + 4 + 5)
+
+// find: Encontre o PRIMEIRO item que passa em um teste.
+console.log("\n--- find (Encontrar o primeiro): ---");
+const primeiroNumeroMaiorQue3 = numeros.find(numero => numero > 3);
+console.log(primeiroNumeroMaiorQue3); // Saída: 4
+
+// some: Pergunte: "Algum item passa no teste?" Resposta: true ou false.
+console.log("\n--- some (Algum?): ---");
+const temNumeroPar = numeros.some(numero => numero % 2 === 0);
+console.log(temNumeroPar); // Saída: true
+
+// every: Pergunte: "TODOS os itens passam no teste?" Resposta: true ou false.
+console.log("\n--- every (Todos?): ---");
+const todosSaoPares = numeros.every(numero => numero % 2 === 0);
+console.log(todosSaoPares); // Saída: false
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 8 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Descubra novas tecnologias!
+        </div>
+
+        <!-- Seção: Desestruturação, Spread e Rest Operators -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">9. Desestruturação, Spread e Rest Operators (Desembalando e Empacotando) 🎁</h2>
+            <p class="mb-4">Esses são recursos modernos que facilitam muito a manipulação de dados em arrays e objetos.</p>
+
+            <h3 class="text-xl mb-2">Desestruturação (Desembalando Presentes):</h3>
+            <p>Imagine que você recebeu um presente (um array ou objeto) e quer tirar itens específicos de dentro dele para usar como variáveis separadas.</p>
+            <pre id="code-destructuring">
+<button class="copy-button" data-code-target="code-destructuring">Copiar Código</button>
+<code>// Desestruturação de Arrays
+const cores = ["vermelho", "verde", "azul"];
+const [cor1, cor2, cor3] = cores; // Pega o 1º, 2º e 3º item e coloca em variáveis
+console.log(cor1); // Saída: vermelho
+
+const [primeiraCor, , ultimaCor] = cores; // Pula o item do meio
+console.log(ultimaCor); // Saída: azul
+
+// Desestruturação de Objetos
+const usuario = {
+    nome: "Pedro",
+    idade: 30,
+    email: "pedro@example.com"
+};
+
+const { nome, idade } = usuario; // Pega as propriedades 'nome' e 'idade' do objeto
+console.log(nome);  // Saída: Pedro
+console.log(idade); // Saída: 30
+
+// Você pode renomear a variável ao desestruturar
+const { email: emailDoUsuario } = usuario;
+console.log(emailDoUsuario); // Saída: pedro@example.com
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Spread Operator (<code>...</code> - Espalhar Ingredientes):</h3>
+            <p>O operador `spread` é como "espalhar" os itens de um array ou as propriedades de um objeto. Útil para combinar coisas ou fazer cópias.</p>
+            <pre id="code-spread-operator">
+<button class="copy-button" data-code-target="code-spread-operator">Copiar Código</button>
+<code>const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5]; // Espalha os itens de arr1 e adiciona mais
+console.log(arr2); // Saída: [1, 2, 3, 4, 5]
+
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1, c: 3 }; // Espalha as propriedades de obj1 e adiciona mais
+console.log(obj2); // Saída: { a: 1, b: 2, c: 3 }
+
+function exibirNumeros(num1, num2, num3) {
+    console.log(num1, num2, num3);
+}
+const nums = [10, 20, 30];
+exibirNumeros(...nums); // Espalha os itens do array como argumentos da função
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Rest Parameter (<code>...</code> - Juntar o que Sobrou):</h3>
+            <p>Quando usado na definição de uma função, o `rest parameter` coleta todos os argumentos "restantes" em um único array.</p>
+            <pre id="code-rest-parameter">
+<button class="copy-button" data-code-target="code-rest-parameter">Copiar Código</button>
+<code>function somarTudo(primeiroNumero, ...outrosNumeros) { // 'outrosNumeros' será um array
+    console.log("Primeiro número:", primeiroNumero);
+    console.log("Outros números:", outrosNumeros);
+    return outrosNumeros.reduce((total, num) => total + num, primeiroNumero);
+}
+
+console.log(somarTudo(1, 2, 3)); // Saída: Primeiro número: 1, Outros números: [2, 3], Total: 6
+console.log(somarTudo(10, 20, 30, 40)); // Saída: Primeiro número: 10, Outros números: [20, 30, 40], Total: 100
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 9 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Sua marca aqui!
+        </div>
+
+        <!-- Seção: Programação Assíncrona (Promises, Async/Await) -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">10. Programação Assíncrona (Pedindo uma Pizza 🍕)</h2>
+            <p class="mb-4">Imagine que você está cozinhando (seu código) e decide pedir uma pizza (uma tarefa demorada, como buscar dados na internet). Você não vai parar de cozinhar e ficar olhando o forno até a pizza chegar, certo? Você continua cozinhando e espera ser avisado quando a pizza estiver pronta. Isso é **programação assíncrona**!</p>
+            <p class="mb-4">JavaScript é "single-threaded" (faz uma coisa por vez), mas ele é esperto e consegue "delegar" tarefas demoradas para não travar tudo. Quando a tarefa demorada termina, ele te avisa.</p>
+
+            <h3 class="text-xl mb-2">Callbacks (O Jeito Antigo de Pedir Pizza)</h3>
+            <p>Você dá o número do seu telefone para a pizzaria e diz: "Quando a pizza chegar, me liga de volta!".</p>
+            <pre id="code-callbacks">
+<button class="copy-button" data-code-target="code-callbacks">Copiar Código</button>
+<code>function buscarDados(callback) {
+    console.log("Pedindo dados... (simula 2 segundos)");
+    setTimeout(() => { // 'setTimeout' simula uma espera
+        const dados = "Dados do servidor (chegaram!)";
+        callback(dados); // Liga de volta (chama a função 'callback')
+    }, 2000); // Espera 2000 milissegundos (2 segundos)
+}
+
+// Quando os dados chegarem, esta função será chamada:
+buscarDados(function(dadosRecebidos) {
+    console.log("Recebi os dados: " + dadosRecebidos);
+});
+
+console.log("Continuando a cozinhar... (código não bloqueado)");
+// Saída:
+// Continuando a cozinhar... (código não bloqueado)
+// Pedindo dados... (simula 2 segundos)
+// (depois de 2 segundos) Recebi os dados: Dados do servidor (chegaram!)
+</code></pre>
+            <p class="mt-4">O problema dos callbacks é que, se você tiver muitas "ligações de volta" aninhadas, o código vira uma "pirâmide da morte" (Callback Hell), difícil de ler.</p>
+
+            <h3 class="text-xl mt-6 mb-2">Promises (A Promessa de Entrega da Pizza) 🤝</h3>
+            <p>Uma Promise é como um bilhete da pizzaria que diz: "Sua pizza está a caminho. Eu prometo que vou entregar, ou te avisar se algo der errado."</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>.then()</code>: O que fazer **se** a promessa for cumprida (pizza entregue).</li>
+                <li><code>.catch()</code>: O que fazer **se** a promessa for quebrada (pizza caiu no chão).</li>
+                <li><code>.finally()</code>: O que fazer **sempre**, não importa o que aconteça (limpar a cozinha).</li>
+            </ul>
+            <pre id="code-promises">
+<button class="copy-button" data-code-target="code-promises">Copiar Código</button>
+<code>function buscarDadosComPromise() {
+    return new Promise((resolve, reject) => { // 'resolve' para sucesso, 'reject' para erro
+        console.log("Pedindo dados com Promise... (simula 1.5 segundos)");
+        setTimeout(() => {
+            const sucesso = true; // Vamos simular que deu tudo certo
+            if (sucesso) {
+                resolve("Dados do servidor (via Promise)"); // A promessa foi cumprida!
+            } else {
+                reject("Erro ao buscar dados!"); // A promessa foi quebrada!
+            }
+        }, 1500);
+    });
+}
+
+buscarDadosComPromise()
+    .then(dados => { // Se a promessa for cumprida...
+        console.log("Recebi os dados (via .then): " + dados);
+    })
+    .catch(erro => { // Se a promessa for quebrada...
+        console.error("Erro (via .catch): " + erro);
+    })
+    .finally(() => { // Sempre acontece no final
+        console.log("Operação de busca de dados finalizada (via .finally).");
+    });
+
+console.log("Continuando a cozinhar... (código não bloqueado)");
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Async/Await (Esperando a Pizza de Forma Elegante) ⏱️</h3>
+            <p>Introduzido no ES2017, <code>async/await</code> torna o código assíncrono muito mais fácil de ler, fazendo-o parecer síncrono, como se você estivesse esperando a pizza chegar parado. Mas por baixo dos panos, ele ainda usa Promises e não bloqueia seu código!</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>async</code>: Coloque antes de uma função para dizer que ela vai lidar com coisas assíncronas.</li>
+                <li><code>await</code>: Coloque antes de uma Promise para "esperar" que ela termine antes de continuar. Só pode ser usado dentro de funções <code>async</code>.</li>
+            </ul>
+            <pre id="code-async-await">
+<button class="copy-button" data-code-target="code-async-await">Copiar Código</button>
+<code>// A mesma função de Promise de antes
+function buscarDadosComPromise() {
+    return new Promise((resolve) => { // Simplificado para sempre resolver
+        setTimeout(() => {
+            resolve("Dados do servidor (via Async/Await)");
+        }, 1000);
+    });
+}
+
+async function obterDados() { // Esta função agora é 'async'
+    try {
+        console.log("Iniciando busca de dados com Async/Await...");
+        // 'await' faz o código "pausar" aqui até a Promise terminar,
+        // mas sem bloquear o resto do programa!
+        const dados = await buscarDadosComPromise();
+        console.log("Dados obtidos: " + dados);
+        console.log("Dados processados com sucesso!");
+    } catch (erro) {
+        console.error("Ocorreu um erro ao obter dados:", erro);
+    } finally {
+        console.log("Função obterDados finalizada.");
+    }
+}
+
+obterDados();
+console.log("Continuando com outras tarefas... (código não bloqueado)");
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 10 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Aproveite as ofertas!
+        </div>
+
+        <!-- Seção: Classes (Orientação a Objetos em JS) -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">11. Classes (Moldes para Criar Objetos) 🍰</h2>
+            <p class="mb-4">Pense em uma **Classe** como uma **receita de bolo** ou um **molde**. Ela descreve como um tipo de "coisa" (um objeto) deve ser e o que ele pode fazer. Um **Objeto** é o **bolo pronto** ou a "coisa" real criada a partir do molde.</p>
+            <pre id="code-classes">
+<button class="copy-button" data-code-target="code-classes">Copiar Código</button>
+<code>class Animal { // A receita/molde para criar animais
+    // O 'constructor' é como as instruções iniciais da receita:
+    // o que é preciso para "montar" o animal (nome, idade)
+    constructor(nome, idade) {
+        this.nome = nome; // 'this.nome' significa "o nome DESTE animal"
+        this.idade = idade;
+    }
+
+    // Um "método" é o que o objeto pode FAZER
+    apresentar() {
+        console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+    }
+
+    // Um método 'static' pertence à receita em si, não a um bolo específico
+    static informacaoGeral() {
+        console.log("Esta é uma classe base para animais em geral.");
+    }
+}
+
+// Criando objetos (fazendo bolos a partir da receita)
+const meuAnimal = new Animal("Fido", 5); // Fazendo um animal chamado Fido
+meuAnimal.apresentar(); // Saída: Olá, meu nome é Fido e tenho 5 anos.
+Animal.informacaoGeral(); // Saída: Esta é uma classe base para animais em geral.
+
+// Herança de Classes (Uma Receita Baseada em Outra)
+// 'Cachorro' é uma receita mais específica, baseada na receita 'Animal'
+class Cachorro extends Animal {
+    constructor(nome, idade, raca) {
+        super(nome, idade); // 'super' chama o construtor da receita 'Animal'
+        this.raca = raca; // Adiciona algo específico da receita 'Cachorro'
+    }
+
+    latir() {
+        console.log(`${this.nome} (${this.raca}) está latindo: Au au!`);
+    }
+
+    // Podemos mudar como o método 'apresentar' funciona para 'Cachorro'
+    apresentar() {
+        console.log(`Eu sou o ${this.nome}, um cachorro de ${this.idade} anos da raça ${this.raca}.`);
+    }
+}
+
+const meuCachorro = new Cachorro("Buddy", 3, "Golden Retriever");
+meuCachorro.apresentar(); // Saída: Eu sou o Buddy, um cachorro de 3 anos da raça Golden Retriever.
+meuCachorro.latir(); // Saída: Buddy (Golden Retriever) está latindo: Au au!
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 11 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Invista em conhecimento!
+        </div>
+
+        <!-- Seção: Módulos JavaScript -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">12. Módulos JavaScript (Organizando Seu Código em Pastas) 📂</h2>
+            <p class="mb-4">Quando seu código cresce, ele pode ficar bagunçado. Módulos são como "pastas" ou "arquivos" separados que você cria para organizar seu código em partes lógicas. Isso torna seu projeto mais fácil de entender, manter e reutilizar.</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>export</code>: Para "compartilhar" algo (uma função, uma variável, uma classe) de um arquivo para outros.</li>
+                <li><code>import</code>: Para "pegar emprestado" algo que foi exportado de outro arquivo.</li>
+            </ul>
+            <pre id="code-modules">
+<button class="copy-button" data-code-target="code-modules">Copiar Código</button>
+<code>// Imagine que este é o conteúdo de um arquivo chamado 'matematica.js'
+// --- arquivo: matematica.js ---
+export const PI = 3.14159; // Exporta a constante PI
+
+export function somar(a, b) { // Exporta a função somar
+    return a + b;
+}
+
+export function subtrair(a, b) { // Exporta a função subtrair
+    return a - b;
+}
+
+// Você pode ter um 'export default' (apenas um por arquivo)
+// É o "principal" item que o arquivo oferece
+export default class Calculadora {
+    multiplicar(a, b) {
+        return a * b;
+    }
+}
+
+// Imagine que este é o conteúdo de outro arquivo, chamado 'app.js'
+// --- arquivo: app.js ---
+// Importa coisas específicas pelo nome
+import { PI, somar } from './matematica.js';
+// Importa o item 'default' (você pode dar o nome que quiser a ele)
+import MinhaCalculadora from './matematica.js';
+
+console.log(PI); // Saída: 3.14159
+console.log(somar(5, 2)); // Saída: 7
+
+const calc = new MinhaCalculadora();
+console.log(calc.multiplicar(4, 3)); // Saída: 12
+
+// Para usar módulos no navegador, você precisa adicionar type="module" na tag script:
+// &lt;script type="module" src="app.js"&gt;&lt;/script&gt;
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 12 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Desenvolvimento web na prática!
+        </div>
+
+        <!-- Seção: Tratamento de Erros -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">13. Tratamento de Erros (Seu Plano B para Imprevistos) 🚨</h2>
+            <p class="mb-4">Nem tudo sai como planejado no código! O tratamento de erros é como ter um "plano B" para quando algo inesperado acontece, evitando que seu programa "quebre" e pare de funcionar.</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><code>try</code>: Tente executar este código.</li>
+                <li><code>catch</code>: Se algo der errado no <code>try</code>, execute este código para lidar com o erro.</li>
+                <li><code>finally</code>: Execute este código **sempre**, não importa se houve erro ou não.</li>
+                <li><code>throw new Error()</code>: Para você mesmo "lançar" um erro quando uma condição não é atendida.</li>
+            </ul>
+            <pre id="code-error-handling">
+<button class="copy-button" data-code-target="code-error-handling">Copiar Código</button>
+<code>function dividir(a, b) {
+    if (b === 0) {
+        // Se o divisor for zero, lançamos um erro!
+        throw new Error("Erro: Divisão por zero não é permitida!");
+    }
+    return a / b;
+}
+
+try { // Tente executar este bloco de código
+    let resultado1 = dividir(10, 2);
+    console.log("Resultado da divisão (10/2): " + resultado1); // Saída: 5
+
+    let resultado2 = dividir(10, 0); // Isso vai causar um erro!
+    console.log("Este log não será executado, pois um erro ocorreu antes.");
+} catch (error) { // Se um erro acontecer no 'try', o código vem para cá
+    console.error("Ops! Ocorreu um erro:", error.message); // Exibe a mensagem do erro
+} finally { // Este bloco sempre será executado no final
+    console.log("Processo de divisão finalizado.");
+}
+
+console.log("O programa continua a execução normalmente após o tratamento de erro.");
+</code></pre>
+        </div>
+
+        <!-- Placeholder para Anúncio 13 -->
+        <div class="ad-placeholder">
+            Espaço para Anúncio (300x250)
+            <br>Oportunidades de carreira!
+        </div>
+
+        <!-- Seção: Manipulação do DOM (Avançado) -->
+        <div class="card">
+            <h2 class="text-2xl mb-4">14. Manipulação do DOM (Dando Vida à Sua Página) 🏗️</h2>
+            <p class="mb-4">O **DOM (Document Object Model)** é como um "mapa" ou "planta" da sua página HTML. Cada pedacinho da sua página (um parágrafo, um botão, uma imagem) é um "nó" nesse mapa. JavaScript consegue ler esse mapa e mudar qualquer coisa nele!</p>
+
+            <h3 class="text-xl mb-2">Criando e Adicionando Elementos (Construindo na Página):</h3>
+            <pre id="code-dom-create">
+<button class="copy-button" data-code-target="code-dom-create">Copiar Código</button>
+<code>// Imagine que você tem um &lt;div id="area-conteudo"&gt;&lt;/div&gt; no seu HTML
+const areaConteudo = document.getElementById('area-conteudo');
+
+// 1. Criar um novo elemento HTML (como cortar um pedaço de madeira)
+const novoParagrafo = document.createElement('p');
+
+// 2. Adicionar texto a ele (escrever algo na madeira)
+novoParagrafo.textContent = "Este é um novo parágrafo criado com JavaScript!";
+
+// 3. Adicionar classes CSS para estilo (pintar a madeira)
+novoParagrafo.classList.add('text-lg', 'font-semibold', 'text-blue-700');
+
+// 4. Colocar o novo elemento dentro da área de conteúdo (pregar a madeira na parede)
+if (areaConteudo) { // Sempre bom verificar se o elemento existe
+    areaConteudo.appendChild(novoParagrafo);
+}
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Removendo Elementos (Demolindo Partes da Página):</h3>
+            <pre id="code-dom-remove">
+<button class="copy-button" data-code-target="code-dom-remove">Copiar Código</button>
+<code>// Supondo que 'novoParagrafo' foi criado e adicionado anteriormente
+// Para remover:
+// if (novoParagrafo && novoParagrafo.parentNode) {
+//     novoParagrafo.parentNode.removeChild(novoParagrafo);
+// }
+// Ou, de forma mais simples (se o elemento existe e é direto):
+// novoParagrafo.remove();
+</code></pre>
+
+            <h3 class="text-xl mt-6 mb-2">Event Delegation (Um Único Porteiro para Vários Eventos) 🚪</h3>
+            <p>Quando você tem uma lista grande de itens e quer que algo aconteça ao clicar em cada um, em vez de colocar um "ouvinte de clique" em CADA item (o que seria ineficiente), você coloca um único ouvinte no "pai" da lista. O pai, como um porteiro, "ouve" todos os cliques e descobre qual filho foi clicado.</p>
+            <pre id="code-event-delegation">
+<button class="copy-button" data-code-target="code-event-delegation">Copiar Código</button>
+<code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Exemplo de Event Delegation&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Minha Lista de Compras&lt;/h2&gt;
+    &lt;ul id="lista-compras" class="border p-4 rounded-lg bg-gray-50"&gt;
+        &lt;li class="p-2 border-b last:border-b-0 cursor-pointer hover:bg-gray-100"&gt;Leite&lt;/li&gt;
+        &lt;li class="p-2 border-b last:border-b-0 cursor-pointer hover:bg-gray-100"&gt;Pão&lt;/li&gt;
+        &lt;li class="p-2 border-b last:border-b-0 cursor-pointer hover:bg-gray-100"&gt;Ovos&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;script&gt;
+        const listaCompras = document.getElementById('lista-compras');
+
+        // Adiciona um único ouvinte de clique à lista inteira (o "porteiro")
+        listaCompras.addEventListener('click', function(event) {
+            // Verifica se o clique foi em um &lt;li&gt; (um "filho" da lista)
+            if (event.target.tagName === 'LI') {
+                console.log('Você clicou no item:', event.target.textContent);
+                // Mude a cor do item clicado para visualização
+                event.target.style.backgroundColor = '#e0e7ff';
+                event.target.style.borderRadius = '0.5rem';
+                event.target.style.transition = 'background-color 0.3s ease';
+            }
+        });
+
+        // Adicionar um novo item dinamicamente (o porteiro ainda vai "ouvir" ele!)
+        const novoItem = document.createElement('li');
+        novoItem.textContent = "Café (Adicionado depois!)";
+        novoItem.classList.add('p-2', 'border-b', 'last:border-b-0', 'cursor-pointer', 'hover:bg-gray-100');
+        listaCompras.appendChild(novoItem);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+
+        <div class="card text-center">
+            <h2 class="text-2xl mb-4">Próximos Passos e Onde Continuar Sua Jornada! 🚀</h2>
+            <p class="mb-4">Parabéns! Você não apenas deu os primeiros passos, mas explorou uma vasta gama de conceitos em JavaScript, desde o básico até tópicos intermediários e avançados. Lembre-se: a **prática constante** é o segredo para solidificar o aprendizado.</p>
+            <p class="mb-4">Para se aprofundar ainda mais e transformar esse conhecimento em projetos reais, sugiro os seguintes caminhos:</p>
+            <ul class="list-disc pl-5 mb-6 inline-block text-left">
+                <li><strong>Pratique, Pratique, Pratique:</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li>Crie pequenos projetos (uma calculadora, um jogo da velha, umaa lista de tarefas).</li>
+                        <li>Resolva desafios de lógica em plataformas como HackerRank, LeetCode, CodeWars.</li>
+                    </ul>
+                </li>
+                <li><strong>Desenvolvimento Frontend (O que o Usuário Vê):</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li>Aprenda a usar **Frameworks e Bibliotecas** que facilitam a criação de interfaces complexas:
+                            <ul>
+                                <li><a href="https://react.dev/" target="_blank" class="text-blue-600 hover:underline">React</a> (da Meta, muito popular)</li>
+                                <li><a href="https://angular.io/" target="_blank" class="text-blue-600 hover:underline">Angular</a> (do Google, robusto para grandes aplicações)</li>
+                                <li><a href="https://vuejs.org/" target="_blank" class="text-blue-600 hover:underline">Vue.js</a> (mais simples para começar com frameworks)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Desenvolvimento Backend (O que Acontece por Trás das Cenas):</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li>Aprenda a usar JavaScript no servidor com <a href="https://nodejs.org/en" target="_blank" class="text-blue-600 hover:underline">Node.js</a>.</li>
+                        <li>Explore frameworks como <a href="https://expressjs.com/" target="_blank" class="text-blue-600 hover:underline">Express.js</a> para construir APIs e servidores web.</li>
+                    </ul>
+                </li>
+                <li><strong>Ferramentas de Desenvolvimento Modernas:</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li>**Gerenciadores de Pacotes:** npm, yarn (para instalar bibliotecas).</li>
+                        <li>**Ferramentas de Build e Bundlers:** Webpack, Vite, Parcel (para otimizar e juntar seu código).</li>
+                    </ul>
+                </li>
+                <li><strong>Testes Automatizados:</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li>Aprenda a escrever testes para seu código com Jest, Mocha, Cypress.</li>
+                    </ul>
+                </li>
+                <li><strong>TypeScript:</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li>Adiciona **tipagem estática** ao JavaScript, o que ajuda muito em projetos grandes, pegando erros antes mesmo de rodar o código.</li>
+                    </ul>
+                </li>
+                <li><strong>Recursos Online de Qualidade:</strong>
+                    <ul class="list-circle pl-5 mt-2">
+                        <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" class="text-blue-600 hover:underline">MDN Web Docs</a> (documentação oficial e completa)</li>
+                        <li><a href="https://www.freecodecamp.org/learn/" target="_blank" class="text-blue-600 hover:underline">freeCodeCamp</a></li>
+                        <li><a href="https://www.codecademy.com/" target="_blank" class="text-blue-600 hover:underline">Codecademy</a></li>
+                        <li>Plataformas de cursos como Udemy, Alura, Coursera.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="mt-6 text-lg font-semibold text-gray-700">JavaScript é uma jornada contínua de aprendizado e descoberta. O mais importante é manter a curiosidade, a paciência e a alegria de construir! Boa sorte!</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para o botão de copiar código
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyButtons = document.querySelectorAll('.copy-button');
+
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.codeTarget;
+                    const codeBlock = document.getElementById(targetId);
+
+                    if (codeBlock) {
+                        const codeToCopy = codeBlock.querySelector('code').innerText;
+                        
+                        // Cria um elemento de texto temporário para copiar
+                        const tempTextArea = document.createElement('textarea');
+                        tempTextArea.value = codeToCopy;
+                        document.body.appendChild(tempTextArea);
+                        tempTextArea.select();
+                        
+                        try {
+                            document.execCommand('copy'); // Copia para a área de transferência
+                            const feedbackSpan = document.createElement('span');
+                            feedbackSpan.textContent = ' Copiado!';
+                            feedbackSpan.classList.add('copy-feedback');
+                            button.parentNode.insertBefore(feedbackSpan, button.nextSibling);
+
+                            // Mostra e esconde o feedback
+                            setTimeout(() => {
+                                feedbackSpan.classList.add('show');
+                            }, 10); // Pequeno delay para a transição
+                            setTimeout(() => {
+                                feedbackSpan.classList.remove('show');
+                                setTimeout(() => {
+                                    feedbackSpan.remove();
+                                }, 300); // Remove o elemento após a transição
+                            }, 1500); // Exibe por 1.5 segundos
+
+                        } catch (err) {
+                            console.error('Falha ao copiar o código: ', err);
+                            alert('Erro ao copiar o código. Por favor, tente manualmente.'); // Fallback
+                        } finally {
+                            document.body.removeChild(tempTextArea);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
